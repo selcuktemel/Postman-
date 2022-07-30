@@ -1,0 +1,295 @@
+{
+	"info": {
+		"_postman_id": "560be39b-fe2b-4a68-b2de-bab30c95df44",
+		"name": "Api Chaning",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21755384"
+	},
+	"item": [
+		{
+			"name": "Get Booking",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstname\": \"Ahmet\",\r\n    \"lastname\": \"Akbulut\",\r\n    \"totalprice\": 100,\r\n    \"depositpaid\": true,\r\n    \"bookingdates\": {\r\n        \"checkin\": \"2022-01-01\",\r\n        \"checkout\": \"2023-01-01\"\r\n    },\r\n    \"additionalneeds\": \"Deniz manzaralı oda rica ederim!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseUrl}}",
+					"host": [
+						"{{BaseUrl}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Booking",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Body lastname Tepecik\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Tepecik\");\r",
+							"});\r",
+							"\r",
+							"const payload=pm.response.json()\r",
+							"\r",
+							"pm.environment.set(\"bookingid\", \"payload.bookingid\");\r",
+							"pm.environment.set(\"firstname\", \"payload.booking.firsname\");\r",
+							"pm.environment.set(\"lastname\", \"payload.booking.lastname\");\r",
+							"pm.environment.set(\"totalprice\", \"payload.booking.totalprice\");\r",
+							"pm.environment.set(\"depositpaid\", \"payload.booking.depositpaid\");\r",
+							"pm.environment.set(\"checkin\", \"payload.booking.bookingdates.checkin\");\r",
+							"pm.environment.set(\"checkout\", \"payload.booking.bookingdates.checkout\");\r",
+							"pm.environment.set(\"checkout\", \"payload.booking.additionalneeds\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstname\": \"Kadir\",\r\n    \"lastname\": \"Tepecik\",\r\n    \"totalprice\": 150,\r\n    \"depositpaid\": true,\r\n    \"bookingdates\": {\r\n        \"checkin\": \"2022-07-19\",\r\n        \"checkout\": \"2022-07-26\"\r\n    },\r\n    \"additionalneeds\": \"Lunch\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseUrl}}",
+					"host": [
+						"{{BaseUrl}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Booking170",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://restful-booker.herokuapp.com/booking/170",
+					"protocol": "https",
+					"host": [
+						"restful-booker",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"booking",
+						"170"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put Booking",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstname\": \"Akif\",\r\n    \"lastname\": \"Rencer\",\r\n    \"totalprice\": 150,\r\n    \"depositpaid\": true,\r\n    \"bookingdates\": {\r\n        \"checkin\": \"2022-07-19\",\r\n        \"checkout\": \"2022-07-26\"\r\n    },\r\n    \"additionalneeds\": \"Lunch\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://restful-booker.herokuapp.com/booking/5067",
+					"protocol": "https",
+					"host": [
+						"restful-booker",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"booking",
+						"5067"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patch Booking",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstname\": \"Gokhan\",\r\n    \"lastname\": \"agar\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://restful-booker.herokuapp.com/booking/5067",
+					"protocol": "https",
+					"host": [
+						"restful-booker",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"booking",
+						"5067"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete  booking",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://restful-booker.herokuapp.com/booking/5057",
+					"protocol": "https",
+					"host": [
+						"restful-booker",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"booking",
+						"5057"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Karakaya Post",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Body lastname Karakaya\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Karakaya\");\r",
+							"});\r",
+							"\r",
+							"const payload=pm.response.json()\r",
+							"\r",
+							"pm.environment.set(\"bookingid\", \"payload.bookingid\");\r",
+							"pm.environment.set(\"firstname\", \"payload.booking.firstname\");\r",
+							"pm.environment.set(\"lastname\", \"payload.booking.lastname\");\r",
+							"pm.environment.set(\"totalprice\", \"payload.booking.totalprice\");\r",
+							"pm.environment.set(\"depositpaid\", \"payload.booking.depositpaid\");\r",
+							"pm.environment.set(\"checkin\", \"payload.booking.bookingdates.checkin\");\r",
+							"pm.environment.set(\"checkout\", \"payload.booking.bookingdates.checkout\");\r",
+							"pm.environment.set(\"checkout\", \"payload.booking.additionalneeds\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstname\": \"Aydın\",\r\n    \"lastname\": \"Karakaya\",\r\n    \"totalprice\": 180,\r\n    \"depositpaid\": true,\r\n    \"bookingdates\": {\r\n        \"checkin\": \"2022-07-20\",\r\n        \"checkout\": \"2022-07-26\"\r\n    },\r\n    \"additionalneeds\": \"Breakfast\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseUrl}}",
+					"host": [
+						"{{BaseUrl}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
