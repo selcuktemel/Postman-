@@ -78,7 +78,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"firstname\": \"Kadir\",\r\n    \"lastname\": \"Tepecik\",\r\n    \"totalprice\": 150,\r\n    \"depositpaid\": true,\r\n    \"bookingdates\": {\r\n        \"checkin\": \"2022-07-19\",\r\n        \"checkout\": \"2022-07-26\"\r\n    },\r\n    \"additionalneeds\": \"Lunch\"\r\n}",
+					"raw": "{\r\n    \"firstname\":\"Aydın\",\r\n    \"lastname\": \"Tepecik\",\r\n    \"totalprice\": 150,\r\n    \"depositpaid\": true,\r\n    \"bookingdates\": {\r\n        \"checkin\": \"2022-07-19\",\r\n        \"checkout\": \"2022-07-26\"\r\n    },\r\n    \"additionalneeds\": \"Lunch\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -100,16 +100,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://restful-booker.herokuapp.com/booking/170",
-					"protocol": "https",
+					"raw": "{{BaseUrl}}/{{bookingid}}",
 					"host": [
-						"restful-booker",
-						"herokuapp",
-						"com"
+						"{{BaseUrl}}"
 					],
 					"path": [
-						"booking",
-						"170"
+						"{{bookingid}}"
 					]
 				}
 			},
@@ -251,8 +247,8 @@
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
-							"pm.test(\"Body lastname Karakaya\", function () {\r",
-							"    pm.expect(pm.response.text()).to.include(\"Karakaya\");\r",
+							"pm.test(\"Body lastname Tepecik\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Tepecik\");\r",
 							"});\r",
 							"\r",
 							"const payload=pm.response.json()\r",
@@ -275,7 +271,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"firstname\": \"Aydın\",\r\n    \"lastname\": \"Karakaya\",\r\n    \"totalprice\": 180,\r\n    \"depositpaid\": true,\r\n    \"bookingdates\": {\r\n        \"checkin\": \"2022-07-20\",\r\n        \"checkout\": \"2022-07-26\"\r\n    },\r\n    \"additionalneeds\": \"Breakfast\"\r\n}",
+					"raw": "{\r\n    \"firstname\": \"Aydın\",\r\n    \"lastname\": \"Tepecik\",\r\n    \"totalprice\": 180,\r\n    \"depositpaid\": true,\r\n    \"bookingdates\": {\r\n        \"checkin\": \"2022-07-20\",\r\n        \"checkout\": \"2022-07-26\"\r\n    },\r\n    \"additionalneeds\": \"Breakfast\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
